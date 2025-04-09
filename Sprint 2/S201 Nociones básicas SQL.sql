@@ -12,7 +12,7 @@ SELECT COUNT(DISTINCT c.country) AS paises
 FROM transaction t JOIN company c ON t.company_id = c.id;
 
 -- Identifica a la compañía con la mayor media de ventas (Usando JOIN)
-SELECT c.company_name, AVG(t.amount) AS promedio_venta
+SELECT c.company_name, ROUND(AVG(t.amount), 2) AS promedio_venta
 FROM transaction t JOIN company c ON t.company_id = c.id
 GROUP BY c.company_name
 ORDER BY promedio_venta DESC
@@ -22,15 +22,20 @@ LIMIT 1;
 -- Muestra todas las transacciones realizadas por empresas de Alemania (Sin usar JOIN)
 SELECT *
 FROM transaction t
-WHERE /*t.declined=0 AND*/ t.company_id IN (SELECT c.id
+WHERE t.declined=0 AND t.company_id IN (SELECT c.id
 											FROM company c
 											WHERE c.country = "Germany");
-/*NOTA: Si "transacciones realizadas" se refiere unicamente a aquellas que fueron realizadas con éxito,
-es decir, que no fueron rechazadas, basta con descomentarear el segmento "t.declined=0	AND"*/
-
                         
 -- Lista las empresas que han realizado transacciones por un amount superior a la media de todas las transacciones. (Sin usar JOIN)
--- V1 Con operador IN
+SELECT c.company_name
+FROM company c
+WHERE EXISTS (SELECT 1
+				FROM transaction t
+				WHERE t.company_id = c.id
+				AND t.amount > (SELECT AVG(t1.amount)
+									FROM transaction t1));
+
+/*-- V1 Con operador IN
 SELECT c.company_name
 FROM company c
 WHERE c.id IN (SELECT t.company_id
@@ -43,7 +48,7 @@ FROM company c
 WHERE c.id = ANY (SELECT t.company_id
 					FROM transaction t
 					WHERE t.amount > (SELECT AVG(t1.amount) 
-										FROM transaction t1));
+										FROM transaction t1));*/
                 
 -- Eliminarán del sistema las empresas que carecen de transacciones registradas, entrega el listado de estas empresas. (Sin usar JOIN)
 -- Con operador EXISTS
@@ -65,7 +70,7 @@ LIMIT 5;
 
 -- Nivel 2. Ejercicio 2
 -- ¿Cuál es la media de ventas por país? Presenta los resultados ordenados de mayor a menor medio.
-SELECT c.country , AVG(t.amount) AS media_ventas
+SELECT c.country , ROUND(AVG(t.amount), 2) AS media_ventas
 FROM transaction t JOIN company c ON t.company_id = c.id
 GROUP BY c.country
 ORDER BY media_ventas DESC;
@@ -87,9 +92,9 @@ SELECT *
 FROM transaction t
 WHERE t.company_id IN (SELECT c.id
 						FROM company c
-                        WHERE c.country = (SELECT country
-											FROM company
-											WHERE company_name ='Non Institute'))
+                        WHERE c.country = (SELECT c1.country
+											FROM company c1
+											WHERE c1.company_name ='Non Institute'))
 ORDER BY t.company_id;
                                             
 -- -------------------------------------------------- Nivel 3 --------------------------------------------------
@@ -102,10 +107,8 @@ SELECT c.company_name, c.phone, c.country, date(t.timestamp) AS fecha, t.amount
 FROM company c JOIN transaction t ON c.id = t.company_id
 WHERE t.amount BETWEEN 100 AND 200 
     AND date(t.timestamp) IN ('2021-04-29', '2021-07-20', '2022-03-13')
-    -- AND t.declined = 0 
+    AND t.declined = 0 
 ORDER BY t.amount DESC;
-/*NOTA: Si "transacciones realizadas" se refiere unicamente a aquellas que fueron realizadas con éxito,
-es decir, que no fueron rechazadas, basta con descomentarear el segmento "AND t.declined=0"*/
 
 -- Nivel 3. Ejercicio 2
 /*Necesitamos optimizar la asignación de los recursos y dependerá de la capacidad operativa que se requiera, 
@@ -120,6 +123,3 @@ FROM company c
 JOIN transaction t ON c.id = t.company_id
 GROUP BY c.id
 ORDER BY cantidad_transacciones DESC;
-
-
-
