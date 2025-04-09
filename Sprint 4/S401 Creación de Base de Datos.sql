@@ -1,6 +1,5 @@
 -- Tarea S4.01
 -- -------------------------------------------------- Nivel 1 --------------------------------------------------
-
 -- Crear la base de datos
 CREATE DATABASE sprint4;
 -- Seleccionar la base de datos para usarla:
@@ -75,8 +74,7 @@ CREATE TABLE transaction_product (
 	CONSTRAINT fk_tp_transaction FOREIGN KEY (tran_id) REFERENCES transaction(tran_id) ON DELETE CASCADE,
     CONSTRAINT fk_tp_product FOREIGN KEY (prod_id) REFERENCES product(prod_id) ON DELETE CASCADE);    
  
- 
--- Ingesta de datos
+ -- Ingesta de datos
 -- Datos de tabla compañia
 LOAD DATA LOCAL INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\companies.csv'
 INTO TABLE company
@@ -182,36 +180,33 @@ WHERE c.comp_name = 'Donec Ltd'
 GROUP BY IBAN;
 
 -- -------------------------------------------------- Nivel 2 --------------------------------------------------
-
 -- Crear una nueva tabla de estado de tarjeta
 CREATE TABLE card_status (
     card_id VARCHAR(15) PRIMARY KEY,
+    -- updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status BOOLEAN);
-
+    
+-- Llenando la tabla de estado, definiendolo en función de las últimas 3 transacciones
 INSERT INTO card_status (card_id, status)
-SELECT 
-    t.card_id,
-    IF(
-        (SELECT COUNT(*) 
-         FROM transaction t2
-         WHERE t2.card_id = t.card_id 
-         AND t2.tran_decline = 1 
-         ORDER BY t2.tran_timestamp DESC 
-         LIMIT 3) = 3, 
-        TRUE, 
-        FALSE
-    ) AS status
-FROM 
-    transaction t
-GROUP BY t.card_id;
+SELECT aux.card_id, IF(SUM(aux.tran_decline) = 3, 0, 1) AS status
+FROM (SELECT t.card_id, t.tran_decline, ROW_NUMBER() OVER (PARTITION BY t.card_id ORDER BY t.tran_timestamp DESC) AS row_num
+		FROM transaction t) aux
+WHERE aux.row_num <= 3
+GROUP BY aux.card_id;
 
+-- Mostrando los registros de la tabla de estatus
+SELECT * FROM card_status;
 
+-- Ejercicio 1
+-- Consultando cuántas tarjetas están activas
+select SUM(status)
+FROM card_status;
 
-
-
-
-
-
-
-
-
+-- ------------------------------- Nivel 3 --------------------------------------------------
+-- Ejercicio 1
+-- Cantidad de transacciones por producto
+SELECT p.prod_id as ID, p.prod_name as Producto, count(tp.tran_id) as Ventas
+FROM product p 
+JOIN transaction_product tp ON p.prod_id = tp.prod_id
+GROUP BY p.prod_id, p.prod_name
+Order BY Ventas DESC;
