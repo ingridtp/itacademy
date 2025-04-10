@@ -51,9 +51,23 @@ VALUES ('108B1D1D-5B23-A76C-55EF-C568E49A99DD', 'CcU-9999', 'b-9999', 9999, 829.
 -- Consultar especificaciones de tabla user
 DESCRIBE user;
 
+-- Eliminar la clave foránea de transaction que referencia a user
+ALTER TABLE transaction DROP FOREIGN KEY fk_transaction_user; 
+
+-- Modificar el tipo de dato de user.id a VARCHAR
+ALTER TABLE user MODIFY id VARCHAR(15);
+
+-- Modificar el tipo de dato de transaction.user_id a VARCHAR
+ALTER TABLE transaction MODIFY user_id VARCHAR(15);
+
+-- Volver a crear la clave foránea
+ALTER TABLE transaction
+ADD CONSTRAINT fk_transaction_user
+FOREIGN KEY (user_id) REFERENCES user(id);
+
 -- Insertar usuario auxiliar con ID b-9999
 INSERT INTO user (id, name, surname, phone, email, birth_date, country, city, postal_code, address)
-VALUES ('b-9999', 'aux', 'aux', 'aux', 'email@aux.com', '1990-01-01', 'aux', 'aux', 'aux', 'aux');
+VALUES ('b-9999', 'aux', 'aux', '0000000000', 'email@aux.com', 'Ene 1, 1900', 'aux', 'aux', 'aux', 'aux');
 
 -- Insertar tarjeta auxiliar con ID CcU-9999
 INSERT INTO credit_card (id, iban, pan, pin, cvv, expiring_date)
