@@ -6,21 +6,14 @@
     id VARCHAR(15) PRIMARY KEY,   -- Identificador único de la tarjeta
 	-- nombre VARCHAR(100) NOT NULL,  -- Nombre del titular de la tarjeta
     iban VARCHAR(34) NOT NULL UNIQUE,  -- Código IBAN único
-    pan VARCHAR(16) NOT NULL UNIQUE,  -- Número PAN de la tarjeta
+    pan VARCHAR(19) NOT NULL UNIQUE,  -- Número PAN de la tarjeta
     pin VARCHAR(4) NOT NULL,  -- PIN de 4 dígitos
     cvv VARCHAR(4) NOT NULL,  -- CVV de 3 o 4 dígitos
     expiring_date VARCHAR(10) NOT NULL  -- Fecha de expiración
-    );    
-        
--- Creando relación con tabla transaction  
-ALTER TABLE transaction 
-ADD CONSTRAINT fk_transaction_credit_card FOREIGN KEY (credit_card_id) REFERENCES credit_card(id) 
-ON DELETE CASCADE;
-
- -- Solución para insertar fechas en formato MM/DD/YY cuando el tipo de datos es DATE 
--- Cambiar el tipo de datos de la columna expiring_date a VARCHAR
-ALTER TABLE credit_card
-MODIFY COLUMN expiring_date VARCHAR(10);
+    );          
+    
+-- Mostrar la estructura de la tabla credit_card
+DESCRIBE credit_card;   
 
 -- Modificar el formato de la fecha
 SET SQL_SAFE_UPDATES = 0; -- Desactivando el modo seguro que impide actualizar datos sin una condición basada en una clave primaria. 
@@ -30,9 +23,16 @@ SET expiring_date = STR_TO_DATE(expiring_date, '%m/%d/%y');
 
 SET SQL_SAFE_UPDATES = 1; -- Activando nuevamente el modo seguro.
 
--- Cambiando el tipo de dato nuevamente a Date
+-- Cambiando el tipo de dato a Date
 ALTER TABLE credit_card
 MODIFY COLUMN expiring_date DATE;
+
+
+-- Creando relación con tabla transaction  
+ALTER TABLE transaction 
+ADD CONSTRAINT fk_transaction_credit_card 
+FOREIGN KEY (credit_card_id) REFERENCES credit_card(id) 
+ON DELETE CASCADE;
   
 -- Nivel 1. Ejercicio 2
 -- Modificar el iban de la tarjeta con id 'CcU-2938'
