@@ -48,30 +48,51 @@ WHERE id = 'CcU-2938';
 INSERT INTO transaction (id, credit_card_id, company_id, user_id, lat, longitude, amount, declined)
 VALUES ('108B1D1D-5B23-A76C-55EF-C568E49A99DD', 'CcU-9999', 'b-9999', 9999, 829.999, -117.999, 111.11, 0);
 
+-- Consultar especificaciones de tabla company
+DESCRIBE company;
+
+-- Mostrar compañías
+SELECT * FROM company;
+
+-- Insertar compañia con ID b-9999
+INSERT INTO company (id, company_name, phone, email, country)
+VALUES ('b-9999', 'aux', '99 99 99 99 99', 'company@aux.com', 'aux');
+
 -- Consultar especificaciones de tabla user
 DESCRIBE user;
 
--- Eliminar la clave foránea de transaction que referencia a user
-ALTER TABLE transaction DROP FOREIGN KEY fk_transaction_user; 
+-- Mostrar usuarios
+SELECT * FROM user;
 
--- Modificar el tipo de dato de user.id a VARCHAR
-ALTER TABLE user MODIFY id VARCHAR(15);
-
--- Modificar el tipo de dato de transaction.user_id a VARCHAR
-ALTER TABLE transaction MODIFY user_id VARCHAR(15);
-
--- Volver a crear la clave foránea
-ALTER TABLE transaction
-ADD CONSTRAINT fk_transaction_user
-FOREIGN KEY (user_id) REFERENCES user(id);
-
--- Insertar usuario auxiliar con ID b-9999
+-- Insertar usuario con ID 9999
 INSERT INTO user (id, name, surname, phone, email, birth_date, country, city, postal_code, address)
-VALUES ('b-9999', 'aux', 'aux', '0000000000', 'email@aux.com', 'Ene 1, 1900', 'aux', 'aux', 'aux', 'aux');
+VALUES ('9999', 'aux', 'aux', '9999999999', 'user@aux.com', 'Ene 1, 1900', 'aux', 'aux', 'aux', 'aux');
 
--- Insertar tarjeta auxiliar con ID CcU-9999
+-- Comprobar si existe tarjeta de credito con id CcU-9999
+SELECT * FROM credit_card
+WHERE id = 'CcU-9999';
+
+-- Consultar especificaciones de tabla credit_card
+DESCRIBE credit_card;
+
+-- Mostrar tarjetas de crédito
+SELECT * FROM credit_card;
+
+-- Insertar tarjeta con ID CcU-9999
 INSERT INTO credit_card (id, iban, pan, pin, cvv, expiring_date)
-VALUES ('CcU-9999', 'aux', 'aux', 'aux', 'aux', '1990-01-01');
+VALUES ('CcU-9999', 'AUX999999999', '9999999999999999', '9999', '999', '1900-01-01');
+
+-- Compruebo los datos insertados
+SELECT 
+	t.id AS tran_id, t.credit_card_id AS tran_credit_card_id, t.company_id AS tran_company_id, t.user_id AS tran_user_id, t.lat AS tran_lat, t.longitude AS tran_longitude, t.amount AS tran_amount, t.declined AS tran_declined, 
+	u.id AS user_id, u.name AS user_name, u.surname AS user_surname, u.phone AS user_phone, u.email AS user_email, u.birth_date AS user_birth_date, u.country AS user_country, u.city AS user_city, u.postal_code AS user_postal_code, u.address AS user_address, 
+	c.id AS comp_id, c.company_name AS comp_name, c.phone AS comp_phone, c.email AS comp_email, c.country AS comp_country, 
+	cc.id AS card_id, cc.iban AS card_iban, cc.pan AS card_pan, cc.pin AS card_pin, cc.cvv AS card_cvv, cc.expiring_date AS card_expiring_date 
+FROM transaction t 
+JOIN user u ON t.user_id = u.id 
+JOIN company c ON t.company_id = c.id 
+JOIN credit_card cc ON t.credit_card_id = cc.id 
+WHERE t.id = '108B1D1D-5B23-A76C-55EF-C568E49A99DD';
 
  -- Nivel 1. Ejercicio 4
  -- Eliminando columna PAN 
