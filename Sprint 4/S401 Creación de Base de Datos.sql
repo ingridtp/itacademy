@@ -164,11 +164,10 @@ DROP TEMPORARY TABLE IF EXISTS temp;
 -- Usuarios con más de 30 transacciones (con subconsulta y utilizando al menos 2 tablas)
 SELECT u.user_id, u.user_name, u.user_surname
 FROM user u
-WHERE u.user_id IN (
-    SELECT t.user_id
-    FROM transaction t
-    GROUP BY t.user_id
-    HAVING COUNT(t.tran_id) > 30);
+WHERE u.user_id IN (SELECT t.user_id
+					FROM transaction t
+					GROUP BY t.user_id
+					HAVING COUNT(t.tran_id) > 30);
     
 -- Ejercicio 2 --
 -- Media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd (utiliza por lo menos 2 tablas)
