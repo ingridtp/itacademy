@@ -58,16 +58,6 @@ SELECT * FROM company;
 INSERT INTO company (id, company_name, phone, email, country)
 VALUES ('b-9999', 'aux', '99 99 99 99 99', 'company@aux.com', 'aux');
 
--- Consultar especificaciones de tabla user
-DESCRIBE user;
-
--- Mostrar usuarios
-SELECT * FROM user;
-
--- Insertar usuario con ID 9999
-INSERT INTO user (id, name, surname, phone, email, birth_date, country, city, postal_code, address)
-VALUES ('9999', 'aux', 'aux', '9999999999', 'user@aux.com', 'Ene 1, 1900', 'aux', 'aux', 'aux', 'aux');
-
 -- Comprobar si existe tarjeta de credito con id CcU-9999
 SELECT * FROM credit_card
 WHERE id = 'CcU-9999';
@@ -85,11 +75,9 @@ VALUES ('CcU-9999', 'AUX999999999', '9999999999999999', '9999', '999', '1900-01-
 -- Compruebo los datos insertados
 SELECT 
 	t.id AS tran_id, t.credit_card_id AS tran_credit_card_id, t.company_id AS tran_company_id, t.user_id AS tran_user_id, t.lat AS tran_lat, t.longitude AS tran_longitude, t.amount AS tran_amount, t.declined AS tran_declined, 
-	u.id AS user_id, u.name AS user_name, u.surname AS user_surname, u.phone AS user_phone, u.email AS user_email, u.birth_date AS user_birth_date, u.country AS user_country, u.city AS user_city, u.postal_code AS user_postal_code, u.address AS user_address, 
 	c.id AS comp_id, c.company_name AS comp_name, c.phone AS comp_phone, c.email AS comp_email, c.country AS comp_country, 
 	cc.id AS card_id, cc.iban AS card_iban, cc.pan AS card_pan, cc.pin AS card_pin, cc.cvv AS card_cvv, cc.expiring_date AS card_expiring_date 
 FROM transaction t 
-JOIN user u ON t.user_id = u.id 
 JOIN company c ON t.company_id = c.id 
 JOIN credit_card cc ON t.credit_card_id = cc.id 
 WHERE t.id = '108B1D1D-5B23-A76C-55EF-C568E49A99DD';
@@ -100,7 +88,7 @@ WHERE t.id = '108B1D1D-5B23-A76C-55EF-C568E49A99DD';
 DROP COLUMN pan;
 
 -- Comprobando que se eliminó la columna
-DESCRIBE transaction;
+DESCRIBE credit_card;
 
 -- -------------------------------------------------- Nivel 2 --------------------------------------------------
 -- Nivel 2. Ejercicio 1
@@ -110,10 +98,11 @@ DELETE FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 -- Comprobar que se eliminó el registro
 SELECT * FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 
+
 -- Nivel 2. Ejercicio 2
 -- Creación de Vista Marketing
 CREATE OR REPLACE VIEW VistaMarketing AS
-SELECT c.company_name, c.phone, c.country, AVG(t.amount) AS promedio
+SELECT c.company_name, c.phone, c.country, ROUND(AVG(t.amount),2) AS promedio
 FROM company c JOIN transaction t ON c.id = t.company_id
 GROUP BY c.company_name, c.phone, c.country;
 
@@ -127,6 +116,7 @@ SELECT *
 FROM VistaMarketing
 WHERE country = 'Germany'
 ORDER BY promedio DESC;
+
 
 -- -------------------------------------------------- Nivel 3 --------------------------------------------------
 -- Nivel 3. Ejercicio 1
