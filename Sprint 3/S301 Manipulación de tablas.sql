@@ -27,7 +27,6 @@ SET SQL_SAFE_UPDATES = 1; -- Activando nuevamente el modo seguro.
 ALTER TABLE credit_card
 MODIFY COLUMN expiring_date DATE;
 
-
 -- Creando relación con tabla transaction  
 ALTER TABLE transaction 
 ADD CONSTRAINT fk_transaction_credit_card 
@@ -48,6 +47,17 @@ WHERE id = 'CcU-2938';
 -- Insertar un nuevo registro en la tabla transaccion
 INSERT INTO transaction (id, credit_card_id, company_id, user_id, lat, longitude, amount, declined)
 VALUES ('108B1D1D-5B23-A76C-55EF-C568E49A99DD', 'CcU-9999', 'b-9999', 9999, 829.999, -117.999, 111.11, 0);
+
+-- Consultar especificaciones de tabla user
+DESCRIBE user;
+
+-- Insertar usuario auxiliar con ID b-9999
+INSERT INTO user (id, name, surname, phone, email, birth_date, country, city, postal_code, address)
+VALUES ('b-9999', 'aux', 'aux', 'aux', 'email@aux.com', '1990-01-01', 'aux', 'aux', 'aux', 'aux');
+
+-- Insertar tarjeta auxiliar con ID CcU-9999
+INSERT INTO credit_card (id, iban, pan, pin, cvv, expiring_date)
+VALUES ('CcU-9999', 'aux', 'aux', 'aux', 'aux', '1990-01-01');
 
  -- Nivel 1. Ejercicio 4
  -- Eliminando columna PAN 
