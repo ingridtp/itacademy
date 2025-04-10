@@ -9,17 +9,15 @@
     pan VARCHAR(16) NOT NULL UNIQUE,  -- Número PAN de la tarjeta
     pin VARCHAR(4) NOT NULL,  -- PIN de 4 dígitos
     cvv VARCHAR(4) NOT NULL,  -- CVV de 3 o 4 dígitos
-    expiring_date DATE NOT NULL  -- Fecha de expiración
+    expiring_date VARCHAR(10) NOT NULL  -- Fecha de expiración
     );    
         
--- Creando relación con tabla transaction   
+-- Creando relación con tabla transaction  
 ALTER TABLE transaction 
-ADD CONSTRAINT fk_transaction_credit_card
-FOREIGN KEY (credit_card_id) 
-REFERENCES credit_card(id) 
+ADD CONSTRAINT fk_transaction_credit_card FOREIGN KEY (credit_card_id) REFERENCES credit_card(id) 
 ON DELETE CASCADE;
 
-    -- Solución para insertar fechas en formato MM/DD/YY cuando el tipo de datos es DATE 
+ -- Solución para insertar fechas en formato MM/DD/YY cuando el tipo de datos es DATE 
 -- Cambiar el tipo de datos de la columna expiring_date a VARCHAR
 ALTER TABLE credit_card
 MODIFY COLUMN expiring_date VARCHAR(10);
