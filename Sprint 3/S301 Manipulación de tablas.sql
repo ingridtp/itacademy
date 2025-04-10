@@ -133,12 +133,28 @@ CREATE TABLE IF NOT EXISTS user (
     postal_code VARCHAR(100),
     address VARCHAR(255));
     
--- CreaR relación con tabla transaction   
+    
+-- Crear relación con tabla transaction   
 ALTER TABLE transaction 
 ADD CONSTRAINT fk_transaction_user
-FOREIGN KEY (user_id) 
-REFERENCES user(id) 
+FOREIGN KEY (user_id) REFERENCES user(id) 
 ON DELETE CASCADE;
+
+-- Buscar transaction que no tienen un user_id contenido en la tabla user
+SELECT *
+FROM transaction t
+WHERE NOT EXISTS (SELECT 1 FROM user u WHERE u.id = t.user_id);
+
+-- Insertar usuario con ID 9999
+INSERT INTO user (id, name, surname, phone, email, birth_date, country, city, postal_code, address)
+VALUES ('9999', 'aux', 'aux', '9999999999', 'user@aux.com', 'Ene 1, 1900', 'aux', 'aux', 'aux', 'aux');
+
+-- Modificar nombre del campo email
+ALTER TABLE data_user
+RENAME COLUMN email TO personal_email;
+
+-- Modificar nombre de tabla user
+RENAME TABLE user TO data_user;
 
 -- Eliminar la columna website de la tabla company
 ALTER TABLE company
