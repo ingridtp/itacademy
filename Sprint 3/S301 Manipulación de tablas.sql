@@ -98,7 +98,6 @@ DELETE FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 -- Comprobar que se eliminó el registro
 SELECT * FROM transaction WHERE id = '02C6201E-D90A-1859-B4EE-88D2986D3B02';
 
-
 -- Nivel 2. Ejercicio 2
 -- Creación de Vista Marketing
 CREATE OR REPLACE VIEW VistaMarketing AS
@@ -167,7 +166,6 @@ MODIFY COLUMN cvv INT NULL, -- Cambiar el tipo de datos de la columna 'cvv' a IN
 MODIFY COLUMN expiring_date VARCHAR(20) NULL, -- Modificar el tipo de datos de la columna 'expiring_date' a VARCHAR(20) y permitir valores nulos
 ADD COLUMN fecha_actual DATE; -- Agregar una nueva columna 'Fecha_actual' de tipo DATE;
 
-
 -- Nivel 3. Ejercicio 2
 -- Creación de la vista InformeTecnico
 CREATE OR REPLACE VIEW InformeTecnico AS
@@ -179,7 +177,3 @@ JOIN company c ON  t.company_id = c.id;
 
 SELECT * FROM InformeTecnico
 ORDER BY Id_transaccion DESC;
-
-
-
-
