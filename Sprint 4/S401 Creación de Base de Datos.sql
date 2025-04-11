@@ -120,6 +120,14 @@ IGNORE 1 ROWS
 (user_id, user_name, user_surname, user_phone, user_email, @user_birth_date, user_country, user_city, user_postal_code, user_address)
 SET user_birth_date = STR_TO_DATE(@user_birth_date, '%b %d, %Y');
 
+-- Mostrar datos de tabla user
+select *
+FROM user;
+
+
+-- Vaciar la tabla
+TRUNCATE TABLE user;
+
 -- Datos de tabla tarjeta de credito
 LOAD DATA LOCAL INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\credit_cards.csv'
 INTO TABLE credit_card
@@ -171,12 +179,12 @@ WHERE u.user_id IN (SELECT t.user_id
     
 -- Ejercicio 2 --
 -- Media de amount por IBAN de las tarjetas de crédito en la compañía Donec Ltd (utiliza por lo menos 2 tablas)
-SELECT cc.card_iban AS IBAN, AVG(t.tran_amount) AS media
+SELECT cc.card_iban AS IBAN, ROUND(AVG(t.tran_amount), 2) AS media
 FROM transaction t
 JOIN credit_card cc ON t.card_id = cc.card_id
 JOIN company c ON t.comp_id = c.comp_id
 WHERE c.comp_name = 'Donec Ltd'
-GROUP BY IBAN;
+GROUP BY cc.card_iban;
 
 -- -------------------------------------------------- Nivel 2 --------------------------------------------------
 -- Crear una nueva tabla de estado de tarjeta
@@ -195,6 +203,10 @@ GROUP BY aux.card_id;
 
 -- Mostrando los registros de la tabla de estatus
 SELECT * FROM card_status;
+
+-- Cantidad de tarjetas registradas
+SELECT COUNT(card_id)
+FROM credit_card;
 
 -- Ejercicio 1
 -- Consultando cuántas tarjetas están activas
