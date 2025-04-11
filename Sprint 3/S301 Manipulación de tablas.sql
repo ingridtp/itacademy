@@ -117,7 +117,6 @@ FROM VistaMarketing
 WHERE country = 'Germany'
 ORDER BY promedio DESC;
 
-
 -- -------------------------------------------------- Nivel 3 --------------------------------------------------
 -- Nivel 3. Ejercicio 1
 -- Creación de la tabla 
@@ -131,8 +130,7 @@ CREATE TABLE IF NOT EXISTS user (
     country VARCHAR(150),
     city VARCHAR(150),
     postal_code VARCHAR(100),
-    address VARCHAR(255));
-    
+    address VARCHAR(255));    
     
 -- Crear relación con tabla transaction   
 ALTER TABLE transaction 
@@ -150,7 +148,7 @@ INSERT INTO user (id, name, surname, phone, email, birth_date, country, city, po
 VALUES ('9999', 'aux', 'aux', '9999999999', 'user@aux.com', 'Ene 1, 1900', 'aux', 'aux', 'aux', 'aux');
 
 -- Modificar nombre del campo email
-ALTER TABLE data_user
+ALTER TABLE user
 RENAME COLUMN email TO personal_email;
 
 -- Modificar nombre de tabla user
@@ -169,17 +167,18 @@ MODIFY COLUMN cvv INT NULL, -- Cambiar el tipo de datos de la columna 'cvv' a IN
 MODIFY COLUMN expiring_date VARCHAR(20) NULL, -- Modificar el tipo de datos de la columna 'expiring_date' a VARCHAR(20) y permitir valores nulos
 ADD COLUMN fecha_actual DATE; -- Agregar una nueva columna 'Fecha_actual' de tipo DATE;
 
+
 -- Nivel 3. Ejercicio 2
 -- Creación de la vista InformeTecnico
 CREATE OR REPLACE VIEW InformeTecnico AS
-SELECT t.id AS Transaccion, u.name AS Nombre, u.surname AS Apellido, cc.iban AS IBAN, c.company_name AS Compannia, t.amount AS Monto
+SELECT t.id AS Id_transaccion, u.name AS Nombre, u.surname AS Apellido, cc.iban AS IBAN, c.company_name AS Compannia, t.amount AS Monto
 FROM transaction t 
-JOIN user u ON t.user_id = u.id
+JOIN data_user u ON t.user_id = u.id
 JOIN credit_card cc ON t.credit_card_id = cc.id
 JOIN company c ON  t.company_id = c.id;
 
 SELECT * FROM InformeTecnico
-ORDER BY Transaccion DESC;
+ORDER BY Id_transaccion DESC;
 
 
 
