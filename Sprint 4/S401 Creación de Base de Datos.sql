@@ -124,7 +124,6 @@ SET user_birth_date = STR_TO_DATE(@user_birth_date, '%b %d, %Y');
 select *
 FROM user;
 
-
 -- Vaciar la tabla
 TRUNCATE TABLE user;
 
@@ -161,10 +160,10 @@ IGNORE 1 ROWS
 
 -- Insertar los datos en la tabla de relación transaction_product
 INSERT INTO transaction_product (tran_id, prod_id)
-SELECT t.tran_id,  p.prod_id
+SELECT t.tran_id, p.prod_id
 FROM temp t JOIN product p
-ON FIND_IN_SET(p.prod_id, t.productos) > 0;
-
+ ON FIND_IN_SET(p.prod_id, REPLACE(t.productos, ' ', '')) > 0;
+ 
 -- Borrar tabla temporal
 DROP TEMPORARY TABLE IF EXISTS temp;
  
