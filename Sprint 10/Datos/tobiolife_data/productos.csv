@@ -1,0 +1,16 @@
+pro_id,pro_tipo,pro_peso,pro_unidad,pro_especificacion,cp_id
+pro_001,"Jabón artesanal",60.00,gramos,NULL,cp_01
+pro_002,"Jabón artesanal",100.00,gramos,NULL,cp_01
+pro_003,"Sal de baño",3.00,onzas,NULL,cp_02
+pro_004,"Sal de baño",5.00,onzas,NULL,cp_02
+pro_005,"Bomba de baño",70.00,gramos,NULL,cp_02
+pro_006,"Bomba de baño",115.00,gramos,NULL,cp_02
+pro_007,"Bálsamo labial",5.00,gramos,NULL,cp_04
+pro_008,"Bálsamo labial",12.00,gramos,NULL,cp_04
+pro_009,"Bálsamo labial",12.00,gramos,"tarro de cristal",NULL
+pro_010,"Vela aromática",100.00,gramos,"esférica sin embase",cp_03
+pro_011,"Vela aromática",150.00,gramos,"cilíndrica sin embase",cp_03
+pro_012,"Vela aromática",230.00,gramos,"esférica sin embase",NULL
+pro_013,"Vela aromática",250.00,gramos,"cilíndrica sin embase",cp_03
+pro_014,"Vela aromática",3.00,onzas,"tarro esmerilado",cp_03
+pro_015,"Vela aromática",5.00,onzas,"tarro esmerilado",cp_03

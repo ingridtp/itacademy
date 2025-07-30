@@ -1,0 +1,35 @@
+ped_id,ped_ciudad,ped_inicial,cli_id
+ped_1,Barcelona,1,cli_001
+ped_10,Barcelona,1,cli_007
+ped_11,Barcelona,1,cli_008
+ped_12,Barcelona,0,cli_001
+ped_13,"Ciudad Real",1,cli_009
+ped_14,"Ciudad Real",1,cli_010
+ped_15,Barcelona,0,cli_008
+ped_16,"Ciudad Real",1,cli_011
+ped_17,"Ciudad Real",0,cli_003
+ped_18,"Ciudad Real",1,cli_012
+ped_19,Barcelona,1,cli_013
+ped_2,"Ciudad Real",1,cli_002
+ped_20,"Ciudad Real",0,cli_003
+ped_21,"Ciudad Real",1,cli_016
+ped_22,Barcelona,0,cli_001
+ped_23,Barcelona,0,cli_008
+ped_24,Barcelona,0,cli_001
+ped_25,"Ciudad Real",0,cli_009
+ped_26,"Ciudad Real",1,cli_014
+ped_27,"Ciudad Real",0,cli_006
+ped_28,Barcelona,0,cli_007
+ped_29,Toledo,1,cli_015
+ped_3,"Ciudad Real",1,cli_003
+ped_30,"Ciudad Real",0,cli_006
+ped_31,"Ciudad Real",0,cli_012
+ped_32,"Ciudad Real",0,cli_017
+ped_33,Barcelona,0,cli_008
+ped_34,Toledo,0,cli_015
+ped_4,"Ciudad Real",1,cli_017
+ped_5,"Ciudad Real",1,cli_004
+ped_6,Barcelona,0,cli_001
+ped_7,"Ciudad Real",0,cli_003
+ped_8,"Ciudad Real",1,cli_005
+ped_9,"Ciudad Real",1,cli_006

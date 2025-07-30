@@ -1,0 +1,30 @@
+opc_id,opc_nombre,opc_precio,opc_vigente,co_id
+opc_001,"Jabón artesanal de 60 gr",4.00,1,co_01
+opc_002,"Jabón artesanal de 100 gr",6.00,1,co_01
+opc_003,"Sal de baño 3 Oz",5.00,1,NULL
+opc_004,"Sal de baño 5 Oz",8.00,1,co_01
+opc_005,"Bomba de baño 70 gr",3.00,1,NULL
+opc_006,"Bomba de baño 115 gr",5.00,1,co_01
+opc_007,"Bálsamo labial 5 gr",3.00,1,co_01
+opc_008,"Bálsamo labial 12 gr",4.00,1,co_01
+opc_009,"Bálsamo labial 12 gr (tarro)",5.00,1,NULL
+opc_010,Esencial,15.00,1,co_02
+opc_011,Panorama,20.00,1,co_02
+opc_012,Alianza,12.00,1,co_02
+opc_013,Exquisita,21.00,1,co_02
+opc_014,Estallido,15.00,1,co_02
+opc_015,Sinergia,15.00,1,co_02
+opc_016,Alquimia,18.00,1,co_02
+opc_017,"SPA Petit",15.00,1,NULL
+opc_018,"SPA Luxe",20.00,1,NULL
+opc_019,"ToBio Life",25.00,1,NULL
+opc_020,"Pack 5 - 60 gr",18.00,1,co_04
+opc_021,"Pack 3 - 100 gr",16.00,1,NULL
+opc_022,"Pack 5 - 100 gr",25.00,1,co_04
+opc_023,"Vela aromática esférica 100g",6.00,1,NULL
+opc_024,"Vela aromática cilíndrica 150g",9.00,1,NULL
+opc_025,"Vela aromática esférica 230g",12.00,1,NULL
+opc_026,"Vela aromática cilíndrica 250g",15.00,1,NULL
+opc_027,"Caja de vela (100g + 150g + 250g)",28.00,1,co_02
+opc_028,"Vela en tarro de cristal esmerilado 3oz",8.00,1,co_01
+opc_029,"Vela en tarro de cristal esmerilado 5oz",12.00,1,co_01
