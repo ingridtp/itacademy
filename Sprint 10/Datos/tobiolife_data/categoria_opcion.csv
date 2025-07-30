@@ -1,0 +1,5 @@
+co_id,co_nombre,co_descripcion
+co_01,"Producto unitario","Productos "
+co_02,"Caja de regalo","Cajas de regalo de varios productos de un mismo tipo"
+co_03,Kit,"Kit de diferentes tipos de productos"
+co_04,"Pack ","Pack de varias unidades de un mismo producto y aroma"
