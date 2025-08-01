@@ -1,6 +1,6 @@
 # 📼 ToBio Life – Proyecto Final de Análisis de Datos
 
-Este repositorio documenta el desarrollo del proyecto final de análisis de datos correspondiente a los dos primeros meses de operación piloto de ToBio Life, un emprendimiento especializado en productos artesanales y naturales para el cuidado personal.
+Este repositorio documenta el desarrollo del proyecto final de la especialización en Data Analytics de IT Academy, basado en el análisis de datos de los dos primeros meses de operación piloto de ToBio Life, un emprendimiento dedicado a productos artesanales y naturales para el cuidado personal.
 
 ---
 
