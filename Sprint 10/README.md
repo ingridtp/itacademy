@@ -62,7 +62,7 @@ git clone https://github.com/tu-usuario/tobiolife-analytics.git
 
 3. Ejecuta el flujo ETL con los notebooks en `/Datos/tobiolife_etl/`.
 
-4. Abre el archivo `.pbix` con Power BI para visualizar dashboards e indicadores.
+4. Abre el archivo `.pbix` con Power BI para visualizar dashboards e indicadores `/PBI/`.
 
 ---
 
