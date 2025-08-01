@@ -8,21 +8,23 @@ Este repositorio documenta el desarrollo del proyecto final de la especializaci�
 
 ```
 ├── Data/
-│   └── Carpeta auxiliar para almacenamiento general.
-│
-├── tobiolife_data/
-│   └── Datos crudos (.csv)
-│
-├── tobiolife_operacional/
-│   ├── Scripts SQL para el modelo relacional operativo (.sql)
-│   └── Modelo entidad-relación (.png)
-│
-├── tobiolife_analytics/
-│   ├── Scripts SQL para el modelo estrella analítico (.sql)
-│   └── Diagrama del modelo estrella (.png)
-│
-├── tobiolife_etl/
-│   └── Scripts en Python para el proceso ETL (.ipynb)
+│   ├── tobiolife_data/
+│   │   └── Datos crudos (.csv)
+│   │
+│   ├── tobiolife_operacional/
+│   │   ├── Scripts SQL para el modelo relacional operativo (.sql)
+│   │   └── Modelo entidad-relación (.png)
+│   │
+│   ├── tobiolife_operacional/
+│   │   ├── Scripts SQL para el modelo relacional operativo (.sql)
+│   │   └── Modelo entidad-relación (.png)
+│   │
+│   ├── tobiolife_analytics/
+│   │   ├── Scripts SQL para el modelo estrella analítico (.sql)
+│   │   └── Diagrama del modelo estrella (.png)
+│   │
+│   └── tobiolife_etl/
+│       └── Scripts en Python para el proceso ETL (.ipynb)
 │
 ├── PBI/
 │   ├── Archivo Power BI (.pbix)
@@ -32,8 +34,8 @@ Este repositorio documenta el desarrollo del proyecto final de la especializaci�
 ├── Informe/
 │   └── Informe final del proyecto (.pdf)
 │
-├── Presentacion/
-│   └── Presentación de exposición final (.pdf)
+└── Presentacion/
+    └── Presentación de exposición final (.pdf)
 ```
 
 ---
