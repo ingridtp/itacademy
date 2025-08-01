@@ -85,7 +85,7 @@ git clone https://github.com/tu-usuario/tobiolife-analytics.git
 
 ## 👥 Autores
 
-- **Autora**: Ingrid Tobío Pérez – `@tuUsuarioGitHub`
+- **Autora**: Ingrid Tobío Pérez – `@ingridtpGitHub`
 - **Mentora**: Alana Oliveri
 
 ---
