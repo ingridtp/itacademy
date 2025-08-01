@@ -92,7 +92,7 @@ git clone https://github.com/tu-usuario/tobiolife-analytics.git
 
 ## 📬 Contacto
 
-Para dudas o sugerencias, puedes contactarme a: [ingrid.tobio@gmail.com]
+Para dudas o sugerencias, puedes contactarme a: ingrid.tobio@gmail.com
 
 ---
 
