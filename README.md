@@ -1,4 +1,4 @@
-# IT Academy – Nivel II: Sprint de Desarrollo
+# IT Academy – Nivel II: Especialización
 
 Este repositorio contiene los entregables académicos correspondientes a la especialización Nivel II del Bootcamp de Análisis de Datos de IT Academy. Cada carpeta corresponde a un sprint de desarrollo, donde se practican diferentes herramientas y técnicas de análisis de datos.
 ---
