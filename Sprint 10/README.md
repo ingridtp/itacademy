@@ -1,7 +1,5 @@
 # 📼 ToBio Life – Proyecto Final de Análisis de Datos
 
-# 📼 ToBio Life – Proyecto Final de Análisis de Datos
-
 Este repositorio documenta el desarrollo del proyecto final de la especialización del Bootcamp en Data Analytics de IT Academy, basado en el análisis de datos de los dos primeros meses de operación piloto de ToBio Life, un emprendimiento dedicado a productos artesanales y naturales para el cuidado personal.
 
 ---
@@ -36,6 +34,20 @@ Este repositorio documenta el desarrollo del proyecto final de la especializaci�
 │
 ├── README.md                     
 ```
+
+---
+
+## 📌 Enlaces de interés
+
+- **Revisar los datos y procesos ETL:** [Data/](https://github.com/ingridtp/itacademy/tree/main/Sprint%2010/Datos)  
+  - Consulta el modelo relacional operativo: [tobiolife_operacional/](https://github.com/ingridtp/itacademy/tree/main/Sprint%2010/Datos/tobiolife_operacional)  
+  - Explora el modelo analítico: [tobiolife_analytics/](https://github.com/ingridtp/itacademy/tree/main/Sprint%2010/Datos/tobiolife_analytics)  
+
+- **Explorar dashboards e indicadores en Power BI:** [PBI/](https://github.com/ingridtp/itacademy/tree/main/Sprint%2010/PBI)  
+
+- **Leer el informe final del proyecto:** [Informe/](https://github.com/ingridtp/itacademy/tree/main/Sprint%2010/Informe)  
+
+- **Ver la presentación final:** [Presentación/](https://github.com/ingridtp/itacademy/tree/main/Sprint%2010/Presentación) 
 
 ---
 
@@ -74,14 +86,6 @@ git clone https://github.com/tu-usuario/tobiolife-analytics.git
 
 ---
 
-## 📄 Documentos adicionales
-
-- 📘 **Informe final del proyecto**: `/Informe/`
-- 📈 **Dashboards y DAX**: `/PBI/`
-- 🗅️ **Presentación final**: `/Presentacion/`
-
----
-
 ## 👥 Autoría
 
 - **Autora:** Ingrid Tobío Pérez  
@@ -101,12 +105,8 @@ Este proyecto es académico y todos los materiales incluidos se encuentran bajo 
 
 **Condiciones específicas para los datos:**
 
-Los datasets incluidos en tobiolife_data son únicamente para fines académicos y de aprendizaje.
-
-No se permite redistribuir los archivos originales (.csv, bases de datos SQL, Power BI) a terceros sin autorización explícita.
-
-El uso externo de los datos debe respetar los términos de los proveedores originales cuando corresponda.
-
-Los notebooks y archivos Power BI son de referencia educativa y de práctica.
-
-Cualquier uso fuera del contexto académico requiere permiso explícito del autor.
+- Los datasets incluidos en tobiolife_data son únicamente para fines académicos y de aprendizaje.
+- No se permite redistribuir los archivos originales (.csv, bases de datos SQL, Power BI) a terceros sin autorización explícita.
+- El uso externo de los datos debe respetar los términos de los proveedores originales cuando corresponda.
+- Los notebooks y archivos Power BI son de referencia educativa y de práctica.
+- Cualquier uso fuera del contexto académico requiere permiso explícito del autor.

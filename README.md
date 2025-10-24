@@ -75,7 +75,7 @@ data-analytics-portfolio/
 ```
 ---
 
-## 📌 Enlaces de Interés
+## 📌 Enlaces de interés
 
 - [Repositorio principal](https://github.com/ingridtp/itacademy)
 
